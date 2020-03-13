@@ -8,4 +8,7 @@
     <string name="start_game">Start Game</string>
     <string name="retry">Retry</string>
     <string name="moves_0">Moves: 0</string>
+    <string name="congrats">Congrats!</string>
+    <string name="moves">Moves:</string>
+    <string name="restart_game">Restart Game</string>
 </resources>

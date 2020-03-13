@@ -6,4 +6,6 @@
     <string name="lights_out">Lights Out</string>
     <string name="enter_name">Enter Name</string>
     <string name="start_game">Start Game</string>
+    <string name="retry">Retry</string>
+    <string name="moves_0">Moves: 0</string>
 </resources>

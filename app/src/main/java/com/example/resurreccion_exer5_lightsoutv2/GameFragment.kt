@@ -152,6 +152,7 @@ class GameFragment : Fragment() {
         }
         // reset move count
         moveCount = 0
+        binding.moveCountText.text = resources.getString(R.string.moves_0)
     }
 
     // get color code of box given row and col (0:white, 1:black)

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.resurreccion_exer5_lightsoutv2.databinding.FragmentStartBinding
 
 /**
@@ -23,6 +24,11 @@ class StartFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentStartBinding>(inflater,
             R.layout.fragment_start,container,false)
+
+        binding.startButton.setOnClickListener { view : View ->
+            view.findNavController().navigate(R.id.action_startFragment_to_gameFragment)
+        }
+
         return binding.root
     }
 }

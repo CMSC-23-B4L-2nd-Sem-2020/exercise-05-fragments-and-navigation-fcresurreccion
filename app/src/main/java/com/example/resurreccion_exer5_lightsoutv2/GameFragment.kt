@@ -42,6 +42,9 @@ class GameFragment : Fragment() {
             retry(it)
         }
 
+        val args = GameFragmentArgs.fromBundle(arguments!!)
+        binding.textNickname.text = args.name
+
         return binding.root
     }
 

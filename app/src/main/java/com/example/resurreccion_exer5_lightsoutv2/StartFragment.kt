@@ -15,11 +15,6 @@ import com.example.resurreccion_exer5_lightsoutv2.databinding.FragmentStartBindi
  */
 class StartFragment : Fragment() {
 
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_start, container, false)
-//    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentStartBinding>(inflater,
@@ -28,7 +23,7 @@ class StartFragment : Fragment() {
         binding.startButton.setOnClickListener { view : View ->
             view.findNavController()
                 .navigate(StartFragmentDirections
-                    .actionStartFragmentToGameFragment())
+                    .actionStartFragmentToGameFragment(binding.nameEditText.text.toString()))
         }
 
         return binding.root

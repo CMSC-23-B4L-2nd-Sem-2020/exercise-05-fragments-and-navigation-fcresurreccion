@@ -127,6 +127,9 @@ class GameFragment : Fragment() {
         // update count
         updateMoveCount()
 
+        binding.moveCountText.visibility = View.VISIBLE
+        binding.retryButton.visibility = View.VISIBLE
+
         // if game is over, navigate to gameWonFragment
         if(isGameOver()){  //check if all boxes are black
             view.findNavController()
@@ -162,6 +165,9 @@ class GameFragment : Fragment() {
         // reset move count
         moveCount = 0
         binding.moveCountText.text = resources.getString(R.string.moves_0)
+
+        binding.moveCountText.visibility = View.GONE
+        binding.retryButton.visibility = View.GONE
     }
 
     // get color code of box given row and col (0:white, 1:black)

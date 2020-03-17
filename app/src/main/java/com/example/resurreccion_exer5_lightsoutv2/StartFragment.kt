@@ -26,7 +26,9 @@ class StartFragment : Fragment() {
             R.layout.fragment_start,container,false)
 
         binding.startButton.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_startFragment_to_gameFragment)
+            view.findNavController()
+                .navigate(StartFragmentDirections
+                    .actionStartFragmentToGameFragment())
         }
 
         return binding.root

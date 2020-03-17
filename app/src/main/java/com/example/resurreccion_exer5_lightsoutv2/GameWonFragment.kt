@@ -26,7 +26,7 @@ class GameWonFragment : Fragment() {
         }
 
         val args = GameWonFragmentArgs.fromBundle(arguments!!)
-        binding.moveCountText.text = resources.getString(R.string.moves) + args.moveCount
+        binding.moveCountText.text = "Moves: ${args.moveCount}"
 
         return binding.root
     }

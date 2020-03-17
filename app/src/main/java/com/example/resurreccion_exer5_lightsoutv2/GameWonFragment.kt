@@ -1,5 +1,6 @@
 package com.example.resurreccion_exer5_lightsoutv2
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.example.resurreccion_exer5_lightsoutv2.databinding.FragmentGameWonBin
  */
 class GameWonFragment : Fragment() {
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentGameWonBinding>(inflater,
@@ -22,6 +24,9 @@ class GameWonFragment : Fragment() {
         binding.restartButton.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_gameWonFragment_to_startFragment)
         }
+
+        val args = GameWonFragmentArgs.fromBundle(arguments!!)
+        binding.moveCountText.text = resources.getString(R.string.moves) + args.moveCount
 
         return binding.root
     }

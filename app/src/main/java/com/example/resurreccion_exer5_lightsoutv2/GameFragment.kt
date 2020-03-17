@@ -126,7 +126,9 @@ class GameFragment : Fragment() {
 
         // if game is over, navigate to gameWonFragment
         if(isGameOver()){  //check if all boxes are black
-            view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())
+            view.findNavController()
+                .navigate(GameFragmentDirections
+                    .actionGameFragmentToGameWonFragment(moveCount))
         }
     }
 

@@ -8,7 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/startConstraint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground" >
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -19,8 +20,7 @@
 
         <TextView
             android:id="@+id/title_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/textstyle"
             android:text="@string/lights_out"
             app:layout_constraintBottom_toTopOf="@+id/name_editText"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,12 +30,15 @@
 
         <EditText
             android:id="@+id/name_editText"
+            style="@style/textstyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/enter_name"
             android:inputType="textPersonName"
+            android:shadowColor="#FFFFFF"
             android:textAlignment="center"
+            android:textColorHint="#81FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/start_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

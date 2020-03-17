@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.resurreccion_exer5_lightsoutv2.databinding.FragmentGameBinding
 
 /**
@@ -100,29 +101,32 @@ class GameFragment : Fragment() {
 
     // flip the clicked box and the adjacent boxes
     private fun closeLights(view : View) {
-        if(!isGameOver()){  //check if all boxes are black
-            // find the clicked box
-            for (row in (0..4)) {
-                for (col in (0..4)) {
-                    if (getButton(row, col) == view) {
-                        flip(row, col) // flip the clicked box
-                        if (row-1 >= 0) { //up
-                            flip(row-1, col)
-                        }
-                        if (col-1 >=0) { //left
-                            flip(row, col-1)
-                        }
-                        if (row+1 < 5) { //down
-                            flip(row+1, col)
-                        }
-                        if (col+1 < 5) { //right
-                            flip(row, col+1)
-                        }
+        // find the clicked box
+        for (row in (0..4)) {
+            for (col in (0..4)) {
+                if (getButton(row, col) == view) {
+                    flip(row, col) // flip the clicked box
+                    if (row-1 >= 0) { //up
+                        flip(row-1, col)
+                    }
+                    if (col-1 >=0) { //left
+                        flip(row, col-1)
+                    }
+                    if (row+1 < 5) { //down
+                        flip(row+1, col)
+                    }
+                    if (col+1 < 5) { //right
+                        flip(row, col+1)
                     }
                 }
             }
-            // update count
-            updateMoveCount()
+        }
+        // update count
+        updateMoveCount()
+
+        // if game is over, navigate to gameWonFragment
+        if(isGameOver()){  //check if all boxes are black
+            view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
         }
     }
 

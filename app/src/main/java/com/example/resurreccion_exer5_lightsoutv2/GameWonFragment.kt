@@ -31,7 +31,9 @@ class GameWonFragment : Fragment() {
         // set click handler of restart game button
         binding.restartButton.setOnClickListener { view : View ->
             // navigate to StartFragment
-            view.findNavController().navigate(R.id.action_gameWonFragment_to_startFragment)
+            view.findNavController()
+                .navigate(GameWonFragmentDirections
+                    .actionGameWonFragmentToStartFragment())
         }
         // extract the arguments from the bundle
         val args = GameWonFragmentArgs.fromBundle(arguments!!)

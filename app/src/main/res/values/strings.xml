@@ -1,14 +1,21 @@
 <resources>
     <string name="app_name">resurreccion_exer5_LightsOutv2</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--  title  -->
     <string name="lights_out">LIGHTS OUT!</string>
-    <string name="enter_name">Enter name here</string>
+
+    <!--  buttons  -->
     <string name="start_game">Start Game</string>
     <string name="retry">Retry</string>
-    <string name="moves_0">Moves: 0</string>
-    <string name="congrats">Congratulations!</string>
-    <string name="moves">Moves:</string>
     <string name="restart_game">Restart Game</string>
+
+    <!--  name text field  -->
+    <string name="enter_name">Enter name here</string>
+
+    <!--  initial move count  -->
+    <string name="moves_0">Moves: 0</string>
+
+    <!--  congratulatory message  -->
+    <string name="congrats">Congratulations!</string>
+
 </resources>

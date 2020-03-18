@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackground">
 
+        <!--    Lights out textView    -->
         <TextView
             android:id="@+id/title_textView"
             style="@style/textstyle"
@@ -21,6 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--    Name textView    -->
         <TextView
             android:id="@+id/text_nickname"
             style="@style/textstyle"
@@ -29,6 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_textView" />
 
+        <!--    Horizontal Guideline    -->
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
@@ -36,6 +39,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.25" />
 
+        <!--    Buttons    -->
         <Button
             android:id="@+id/box_1_1"
             style="@style/whiteBox"
@@ -253,6 +257,7 @@
             app:layout_constraintStart_toEndOf="@+id/box_5_4"
             app:layout_constraintTop_toTopOf="@+id/box_5_4" />
 
+        <!--    Horizontal Guideline    -->
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
             android:layout_width="wrap_content"
@@ -260,6 +265,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.8" />
 
+        <!--    Move count textView    -->
         <TextView
             android:id="@+id/move_count_text"
             style="@style/textstyle"
@@ -270,6 +276,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
+        <!--    Retry Button    -->
         <Button
             android:id="@+id/retry_button"
             android:layout_width="wrap_content"

@@ -5,6 +5,7 @@
     android:id="@+id/navigation"
     app:startDestination="@id/startFragment">
 
+    <!--    StartFragment    -->
     <fragment
         android:id="@+id/startFragment"
         android:name="com.example.resurreccion_exer5_lightsoutv2.StartFragment"
@@ -14,6 +15,8 @@
             android:id="@+id/action_startFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
+
+    <!--    GameFragment    -->
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.resurreccion_exer5_lightsoutv2.GameFragment"
@@ -28,6 +31,8 @@
             android:name="name"
             app:argType="string" />
     </fragment>
+
+    <!--    GameWonFragment    -->
     <fragment
         android:id="@+id/gameWonFragment"
         android:name="com.example.resurreccion_exer5_lightsoutv2.GameWonFragment"

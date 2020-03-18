@@ -2,7 +2,10 @@
 
 buildscript {
     ext.kotlin_version = '1.3.50'
+
+    // Add a variable for the navigationVersion
     ext.navigationVersion = '1.0.0-rc02'
+
     repositories {
         google()
         jcenter()

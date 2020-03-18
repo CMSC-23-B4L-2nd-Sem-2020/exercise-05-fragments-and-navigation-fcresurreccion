@@ -1,6 +1,5 @@
 package com.example.resurreccion_exer5_lightsoutv2
 
-
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,12 +13,16 @@ import com.example.resurreccion_exer5_lightsoutv2.databinding.FragmentGameBindin
 
 /**
  * A simple [Fragment] subclass.
+ *
+ * GameFragment (game board)
+ * : contains the 5x5 grid of “lights”, which are all initially “ON”
+ *   and a retry button that turns on all the lights
  */
 class GameFragment : Fragment() {
-
+    // Declare a binding variable
     private lateinit var binding: FragmentGameBinding
 
-    // Declare variables
+    // Declare variable for move count
     private var moveCount: Int = 0
 
     // Create 2d array for colorCode (0=white, 1=black)
@@ -31,24 +34,32 @@ class GameFragment : Fragment() {
         intArrayOf(0,0,0,0,0)
     )
 
+    // override onCreateView
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        // create a binding variable and
+        // inflate the layout of GameFragment
         binding = DataBindingUtil.inflate<FragmentGameBinding>(inflater,
             R.layout.fragment_game,container,false)
 
+        // set click handler of the game board buttons
         setListeners()
 
+        // set click handler of retry button
         binding.retryButton.setOnClickListener{
             retry(it)
         }
-
+        // extract the arguments from the bundle
         val args = GameFragmentArgs.fromBundle(arguments!!)
+
+        // set text for the name textView from args
         binding.textNickname.text = args.name
 
+        // return the inflated view
         return binding.root
     }
 
-    // return button view given row and col
+    // return button view in the xth row and yth column
     private fun getButton(x : Int, y : Int): Button {
         val row1: List<Button> = listOf(
             binding.box11,
@@ -102,13 +113,16 @@ class GameFragment : Fragment() {
         }
     }
 
-    // flip the clicked box and the adjacent boxes
+    // click handler of the game board buttons
+    // which flips the clicked box and the adjacent boxes
     private fun closeLights(view : View) {
         // find the clicked box
         for (row in (0..4)) {
             for (col in (0..4)) {
                 if (getButton(row, col) == view) {
-                    flip(row, col) // flip the clicked box
+                    // flip the clicked box
+                    flip(row, col)
+                    // flip adjacent boxes
                     if (row-1 >= 0) { //up
                         flip(row-1, col)
                     }
@@ -124,21 +138,23 @@ class GameFragment : Fragment() {
                 }
             }
         }
-        // update count
+        // update move count
         updateMoveCount()
 
+        // update visibility of move count and retry button
         binding.moveCountText.visibility = View.VISIBLE
         binding.retryButton.visibility = View.VISIBLE
 
-        // if game is over, navigate to gameWonFragment
+        // check if game is over
         if(isGameOver()){  //check if all boxes are black
+            // navigate to GameWonFragment and pass the move count argument
             view.findNavController()
                 .navigate(GameFragmentDirections
                     .actionGameFragmentToGameWonFragment(moveCount))
         }
     }
 
-    // change the color of the box
+    // flip the box (change the color of the box)
     private fun flip(row : Int, col : Int){
         val view : View = getButton(row,col)
         // If white, change to black
@@ -155,6 +171,7 @@ class GameFragment : Fragment() {
 
     // click handler for Retry button
     fun retry(view : View){
+        // turn on all the lights
         for (row in (0..4)) {
             for (col in (0..4)) {
                 val box : View  = getButton(row, col)
@@ -166,20 +183,22 @@ class GameFragment : Fragment() {
         moveCount = 0
         binding.moveCountText.text = resources.getString(R.string.moves_0)
 
+        // update visibility of move count and retry button
         binding.moveCountText.visibility = View.GONE
         binding.retryButton.visibility = View.GONE
     }
 
-    // get color code of box given row and col (0:white, 1:black)
+    // get color code of box at xth row and yth col
     private fun getColorCode(x:Int, y:Int): Int{
         return colorCode[x][y]
     }
 
-    // set color code of box given row and col (0:white, 1:black)
+    // set color code of box at xth row and yth col (0:white, 1:black)
     private fun setColorCode(x:Int, y: Int, code:Int){
         colorCode[x][y] = code
     }
 
+    // update the text of move count text view
     @SuppressLint("SetTextI18n")
     fun updateMoveCount(){
         moveCount += 1
@@ -191,10 +210,12 @@ class GameFragment : Fragment() {
         for (row in (0..4)){
             for (col in (0..4)){
                 if (getColorCode(row,col) == 0){
+                    // at least one light is still switched on
                     return false
                 }
             }
         }
+        // all lights are out, game over
         return true
     }
 }
